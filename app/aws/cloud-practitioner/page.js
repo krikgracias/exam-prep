@@ -337,7 +337,7 @@ export default function AWSExam() {
                   <span className={`w-6 h-6 rounded-full border-2 mr-3 flex items-center justify-center ${answers[currentQuestion] === index ? 'border-blue-500 bg-blue-500' : 'border-gray-300'}`}>
                     {answers[currentQuestion] === index && <CheckCircle className="w-4 h-4 text-white" />}
                   </span>
-                  <span className="flex-1">{option}</span>
+                  <span className="flex-1 text-gray-900 font-medium">{option}</span>
                 </div>
               </button>
             ))}
