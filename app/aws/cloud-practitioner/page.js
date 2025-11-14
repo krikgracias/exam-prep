@@ -273,16 +273,16 @@ export default function AWSExam() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 p-4 bg-blue-50 rounded border border-blue-200">
-                <p className="font-semibold text-blue-900 mb-2">📖 Recommended Study Resources:</p>
-                <ul className="text-sm space-y-1 text-blue-800">
-                  <li>• AWS Cloud Practitioner Essentials (free digital course)</li>
-                  <li>• AWS Whitepapers: Overview of Amazon Web Services</li>
-                  <li>• AWS Well-Architected Framework documentation</li>
-                  <li>• AWS Pricing Calculator and Cost Management documentation</li>
-                  <li>• Practice with AWS Free Tier hands-on labs</li>
-                </ul>
-              </div>
+                <div className="mt-6 p-4 bg-blue-50 rounded border border-blue-200">
+                  <p className="font-semibold text-blue-900 mb-2">📖 Recommended Study Resources:</p>
+                  <ul className="text-sm space-y-2 text-blue-800">
+                    <li>• <a href="https://aws.amazon.com/training/digital/aws-cloud-practitioner-essentials/" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600 font-medium">AWS Cloud Practitioner Essentials</a> (free digital course)</li>
+                    <li>• <a href="https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600 font-medium">AWS Whitepapers: Overview of Amazon Web Services</a></li>
+                    <li>• <a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600 font-medium">AWS Well-Architected Framework</a> documentation</li>
+                    <li>• <a href="https://calculator.aws/" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600 font-medium">AWS Pricing Calculator</a> and <a href="https://aws.amazon.com/aws-cost-management/" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600 font-medium">Cost Management</a> documentation</li>
+                    <li>• <a href="https://aws.amazon.com/free/" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600 font-medium">Practice with AWS Free Tier</a> hands-on labs</li>
+                  </ul>
+                </div>
             </div>
           )}
 
