@@ -23,7 +23,7 @@ export default function ExamPrepHub() {
         { name: 'A+ Core 1 (220-1101)', path: '/comptia/a-plus-core1', status: 'Coming Soon', questions: 90 },
         { name: 'A+ Core 2 (220-1102)', path: '/comptia/a-plus-core2', status: 'Coming Soon', questions: 90 },
         { name: 'Network+ (N10-008)', path: '/comptia/network-plus', status: 'Coming Soon', questions: 90 },
-        { name: 'Project+ (PK0-005)', path: '/comptia/project-plus', status: 'Coming Soon', Available: 90 },
+        { name: 'Project+ (PK0-005)', path: '/comptia/project-plus', status: 'Available', questions: 90 },
         { name: 'Security+ (SY0-701)', path: '/comptia/security-plus', status: 'Coming Soon', questions: 90 }
       ]
     },
