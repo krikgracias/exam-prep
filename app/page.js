@@ -47,6 +47,20 @@ export default function ExamPrepHub() {
     }
   ];
 
+  // --- DYNAMIC CALCULATIONS START HERE ---
+  
+  // 1. Count total categories (Tracks)
+  const totalTracks = examCategories.length;
+
+  // 2. Count total exams marked as 'Available' across all categories
+  const availableExamsCount = examCategories.reduce((total, category) => {
+    // Filter the exams in this category to find 'Available' ones, and add that count to the total
+    const categoryAvailableCount = category.exams.filter(exam => exam.status === 'Available').length;
+    return total + categoryAvailableCount;
+  }, 0);
+
+  // --- CALCULATIONS END ---
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="bg-white shadow-sm border-b">
@@ -63,16 +77,20 @@ export default function ExamPrepHub() {
 
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {/* Dynamic Available Exams Count */}
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <BookOpen className="w-12 h-12 mx-auto mb-3 text-blue-600" />
-            <div className="text-3xl font-bold text-gray-900">1</div>
+            <div className="text-3xl font-bold text-gray-900">{availableExamsCount}</div>
             <div className="text-gray-600">Available Exams</div>
           </div>
+
+          {/* Dynamic Certification Tracks Count */}
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <Award className="w-12 h-12 mx-auto mb-3 text-green-600" />
-            <div className="text-3xl font-bold text-gray-900">4</div>
+            <div className="text-3xl font-bold text-gray-900">{totalTracks}</div>
             <div className="text-gray-600">Certification Tracks</div>
           </div>
+
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <Shield className="w-12 h-12 mx-auto mb-3 text-purple-600" />
             <div className="text-3xl font-bold text-gray-900">100%</div>
