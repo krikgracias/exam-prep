@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Award, BookOpen, CheckCircle } from 'lucide-react';
+import { Award, BookOpen, CheckCircle, XCircle } from 'lucide-react';
 
 export default function AWSExam() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -162,8 +162,13 @@ export default function AWSExam() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 p-8">
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl p-8">
+          {/* Back Button */}
+          <a href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-6 transition-colors">
+            <span className="mr-2">←</span> Back to Exam List
+          </a>
+
           <div className="text-center mb-8">
-            <Award className={`w-24 h-24 mx-auto mb-4 ${results.passed ? 'text-green-500' : 'text-red-500'}`} />
+            {results.passed ? <Award className="w-24 h-24 mx-auto mb-4 text-green-500" /> : <XCircle className="w-24 h-24 mx-auto mb-4 text-red-500" />}
             <h1 className="text-4xl font-bold mb-2">{results.passed ? '🎉 Congratulations!' : 'Keep Studying!'}</h1>
             <p className="text-xl text-gray-600 mb-4">{results.passed ? 'You PASSED the AWS Certified Cloud Practitioner Exam!' : 'You did not pass this time, but you\'re making progress!'}</p>
           </div>
@@ -293,8 +298,15 @@ export default function AWSExam() {
           )}
 
           <button onClick={() => window.location.reload()} className="w-full mt-6 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">
-            Take Another Practice Exam
+            Retake Exam
           </button>
+
+          <a 
+            href="/"
+            className="block w-full mt-3 bg-gray-200 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-300 font-medium text-center"
+          >
+            ← Back to Exam List
+          </a>
         </div>
       </div>
     );
@@ -307,6 +319,11 @@ export default function AWSExam() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 p-4">
       <div className="max-w-4xl mx-auto">
+        {/* Back Button */}
+        <a href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-4 transition-colors">
+          <span className="mr-2">←</span> Back to Exam List
+        </a>
+
         <div className="bg-white rounded-lg shadow-md p-6 mb-4">
           <div className="flex justify-between items-center mb-4">
             <h1 className="text-2xl font-bold text-gray-800">AWS Cloud Practitioner Exam Prep</h1>
@@ -368,4 +385,4 @@ export default function AWSExam() {
       </div>
     </div>
   );
-}; 
+}
