@@ -288,6 +288,11 @@ export default function ProjectPlusExam() {
 
     return (
       <div className="max-w-4xl mx-auto p-6">
+        {/* Back Button */}
+        <a href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-4 transition-colors">
+          <span className="mr-2">←</span> Back to Exam List
+        </a>
+
         <div className={`${passed ? 'bg-green-50 border-green-500' : 'bg-red-50 border-red-500'} border-2 rounded-lg p-8 mb-6`}>
           <div className="flex items-center justify-center mb-4">
             {passed ? <Award className="w-16 h-16 text-green-600" /> : <XCircle className="w-16 h-16 text-red-600" />}
@@ -367,6 +372,13 @@ export default function ProjectPlusExam() {
         >
           Retake Exam
         </button>
+
+        <a 
+          href="/"
+          className="block w-full mt-3 bg-gray-200 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-300 font-medium text-center"
+        >
+          ← Back to Exam List
+        </a>
       </div>
     );
   }
@@ -377,6 +389,11 @@ export default function ProjectPlusExam() {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
+      {/* Back Button */}
+      <a href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-4 transition-colors">
+        <span className="mr-2">←</span> Back to Exam List
+      </a>
+
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg p-6 mb-6 shadow-lg">
         <h1 className="text-3xl font-bold mb-2">CompTIA Project+ Practice Exam</h1>
