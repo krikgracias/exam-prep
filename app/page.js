@@ -28,6 +28,7 @@ const examCategories = [
       { name: 'Project+ (PK0-005)', path: '/comptia/project-plus', status: 'Available', questions: 90 },
       { name: 'Linux+ (XK0-005)', path: '/comptia/linux-plus', status: 'Coming Soon', questions: 90 },
       { name: 'Cloud+ (CV0-004)', path: '/comptia/cloud-plus', status: 'Coming Soon', questions: 90 },
+      { name: 'Data+ (DA0-001)', path: '/comptia/cysa-plus', status: 'Coming Soon', questions: 85 },
       { name: 'CySA+ (CS0-003)', path: '/comptia/cysa-plus', status: 'Coming Soon', questions: 85 }
     ]
   },
@@ -39,8 +40,8 @@ const examCategories = [
       { name: 'Azure Fundamentals (AZ-900)', path: '/microsoft/az-900', status: 'Coming Soon', questions: 60 },
       { name: 'Azure Administrator (AZ-104)', path: '/microsoft/az-104', status: 'Coming Soon', questions: 60 },
       { name: 'Azure Security Engineer (AZ-500)', path: '/microsoft/az-500', status: 'Coming Soon', questions: 60 },
-      { name: 'Azure Data Fundamentals (DP-900)', path: '/microsoft/dp-900', status: 'Coming Soon', questions: 60 },
-      { name: 'Administering Azure SQL (DP-300)', path: '/microsoft/dp-300', status: 'Coming Soon', questions: 60 },
+      { name: 'Azure Data Fundamentals (DP-900)', path: '/microsoft/dp-900', status: 'Available', questions: 60 },
+      { name: 'Administering Azure SQL (DP-300)', path: '/microsoft/dp-300', status: 'Available', questions: 60 },
       { name: 'Microsoft 365 Fundamentals (MS-900)', path: '/microsoft/ms-900', status: 'Coming Soon', questions: 60 }
     ]
   },
@@ -74,7 +75,7 @@ const examCategories = [
       { name: 'LFCS (Linux Foundation Certified SysAdmin)', path: '/linux/lfcs', status: 'Coming Soon', questions: 60 },
       { name: 'Kubernetes CKA', path: '/devops/cka', status: 'Available', questions: 15 },
       { name: 'Kubernetes CKAD', path: '/devops/ckad', status: 'Available', questions: 15 },
-      { name: 'Terraform Associate', path: '/devops/terraform-associate', status: 'Coming Soon', questions: 57 },
+      { name: 'Terraform Associate', path: '/devops/terraform-associate', status: 'Available', questions: 57 },
       { name: 'Docker Certified Associate', path: '/devops/docker-dca', status: 'Coming Soon', questions: 55 }
     ]
   },
