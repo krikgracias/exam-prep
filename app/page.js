@@ -9,27 +9,63 @@ const examCategories = [
     name: 'AWS Certifications',
     icon: Cloud,
     color: 'bg-orange-500',
-    exams: [
-      // Foundational
-      { name: 'Cloud Practitioner (CLF-C02)', path: '/aws/cloud-practitioner', status: 'Available', questions: 65 },
-      
-      // Associate Level
-      { name: 'Solutions Architect Associate (SAA-C03)', path: '/aws/solutions-architect-associate', status: 'Coming Soon', questions: 65 },
-      { name: 'Developer Associate (DVA-C02)', path: '/aws/developer-associate', status: 'Coming Soon', questions: 65 },
-      { name: 'SysOps Administrator Associate (SOA-C02)', path: '/aws/sysops-administrator', status: 'Coming Soon', questions: 65 },
-      
-      // Professional Level
-      { name: 'Solutions Architect Professional (SAP-C02)', path: '/aws/solutions-architect-professional', status: 'Coming Soon', questions: 75 },
-      { name: 'DevOps Engineer Professional (DOP-C02)', path: '/aws/devops-engineer-professional', status: 'Coming Soon', questions: 75 },
-      
-      // Specialty Certifications
-      { name: 'Advanced Networking Specialty (ANS-C01)', path: '/aws/advanced-networking-specialty', status: 'Coming Soon', questions: 65 },
-      { name: 'Security Specialty (SCS-C02)', path: '/aws/security-specialty', status: 'Coming Soon', questions: 65 },
-      { name: 'Machine Learning Specialty (MLS-C01)', path: '/aws/machine-learning-specialty', status: 'Coming Soon', questions: 65 },
-      { name: 'Data Analytics Specialty (DAS-C01)', path: '/aws/data-analytics-specialty', status: 'Coming Soon', questions: 65 },
-      { name: 'Database Specialty (DBS-C01)', path: '/aws/database-specialty', status: 'Coming Soon', questions: 65 },
-      { name: 'SAP on AWS Specialty (PAS-C01)', path: '/aws/sap-on-aws-specialty', status: 'Coming Soon', questions: 65 },
-      { name: 'Data Engineer Associate (DEA-C01)', path: '/aws/data-engineer-associate', status: 'Coming Soon', questions: 85 }
+    description: 'Amazon Web Services - 13 Certification Paths',
+    paths: [
+      {
+        pathName: 'Foundational',
+        pathDescription: 'Start here - No prerequisites',
+        exams: [
+          { name: 'Cloud Practitioner (CLF-C02)', path: '/aws/cloud-practitioner', status: 'Available', questions: 65, duration: '90 min', cost: '$100' }
+        ]
+      },
+      {
+        pathName: 'Associate Level',
+        pathDescription: 'Choose based on your role - Cloud Practitioner recommended',
+        exams: [
+          { name: 'Solutions Architect Associate (SAA-C03)', path: '/aws/solutions-architect-associate', status: 'Coming Soon', questions: 65, duration: '130 min', cost: '$150', recommended: 'Architects, SREs' },
+          { name: 'Developer Associate (DVA-C02)', path: '/aws/developer-associate', status: 'Coming Soon', questions: 65, duration: '130 min', cost: '$150', recommended: 'Developers' },
+          { name: 'SysOps Administrator Associate (SOA-C02)', path: '/aws/sysops-administrator', status: 'Coming Soon', questions: 65, duration: '130 min', cost: '$150', recommended: 'SysAdmins, SREs' },
+          { name: 'Data Engineer Associate (DEA-C01)', path: '/aws/data-engineer-associate', status: 'Coming Soon', questions: 85, duration: '170 min', cost: '$150', recommended: 'Data Engineers' }
+        ]
+      },
+      {
+        pathName: 'Professional Level',
+        pathDescription: 'Advanced certifications - Associate level required',
+        exams: [
+          { name: 'Solutions Architect Professional (SAP-C02)', path: '/aws/solutions-architect-professional', status: 'Coming Soon', questions: 75, duration: '180 min', cost: '$300', prereq: 'SAA-C03' },
+          { name: 'DevOps Engineer Professional (DOP-C02)', path: '/aws/devops-engineer-professional', status: 'Coming Soon', questions: 75, duration: '180 min', cost: '$300', prereq: 'DVA-C02 or SOA-C02' }
+        ]
+      },
+      {
+        pathName: 'Specialty Certifications',
+        pathDescription: 'Deep expertise in specific domains',
+        exams: [
+          { name: 'Advanced Networking Specialty (ANS-C01)', path: '/aws/advanced-networking-specialty', status: 'Coming Soon', questions: 65, duration: '170 min', cost: '$300', recommended: 'Network Engineers' },
+          { name: 'Security Specialty (SCS-C02)', path: '/aws/security-specialty', status: 'Coming Soon', questions: 65, duration: '170 min', cost: '$300', recommended: 'Security Engineers' },
+          { name: 'Machine Learning Specialty (MLS-C01)', path: '/aws/machine-learning-specialty', status: 'Coming Soon', questions: 65, duration: '180 min', cost: '$300', recommended: 'ML Engineers' },
+          { name: 'Data Analytics Specialty (DAS-C01)', path: '/aws/data-analytics-specialty', status: 'Coming Soon', questions: 65, duration: '180 min', cost: '$300', recommended: 'Data Analysts' },
+          { name: 'Database Specialty (DBS-C01)', path: '/aws/database-specialty', status: 'Coming Soon', questions: 65, duration: '180 min', cost: '$300', recommended: 'DBAs' },
+          { name: 'SAP on AWS Specialty (PAS-C01)', path: '/aws/sap-on-aws-specialty', status: 'Coming Soon', questions: 65, duration: '170 min', cost: '$300', recommended: 'SAP Consultants' }
+        ]
+      }
+    ],
+    recommendedPaths: [
+      {
+        title: 'Cloud Architecture Path',
+        sequence: ['Cloud Practitioner', 'Solutions Architect Associate', 'Solutions Architect Professional', 'Choose Specialty: Networking/Security/Database']
+      },
+      {
+        title: 'Development Path',
+        sequence: ['Cloud Practitioner', 'Developer Associate', 'DevOps Engineer Professional', 'Choose Specialty: ML/Data Analytics']
+      },
+      {
+        title: 'SRE/Operations Path',
+        sequence: ['Cloud Practitioner', 'SysOps Administrator Associate', 'DevOps Engineer Professional', 'Choose Specialty: Networking/Security']
+      },
+      {
+        title: 'Data Engineering Path',
+        sequence: ['Cloud Practitioner', 'Data Engineer Associate', 'Choose Specialty: Data Analytics/Database/ML']
+      }
     ]
   },
   {
