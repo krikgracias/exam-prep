@@ -89,7 +89,7 @@ export default function ExamPrepHub() {
           pathDescription: 'Enterprise development standards',
           exams: [
             { name: 'Java SE 17 Developer (1Z0-829)', path: '/programming/java-se-17', status: 'Coming Soon', questions: 50, duration: '90 min' },
-            { name: 'Java Certified Foundations Associate', path: '/programming/java-foundations', status: 'Available', questions: 60, duration: '120 min' }
+            { name: 'Java Certified Foundations Associate', path: '/programming/java-foundations', status: 'Coming Soon', questions: 60, duration: '120 min' }
           ]
         },
         {
@@ -97,7 +97,7 @@ export default function ExamPrepHub() {
           pathDescription: 'Full-stack web development',
           exams: [
             { name: 'JSNAD (OpenJS Node.js App Developer)', path: '/programming/node-jsnad', status: 'Coming Soon', questions: 30, duration: '120 min' },
-            { name: 'JavaScript Algorithms & Data Structures', path: '/programming/js-algo', status: 'Available', questions: 50, duration: '60 min' }
+            { name: 'JavaScript Algorithms & Data Structures', path: '/programming/js-algo', status: 'Coming Soon', questions: 50, duration: '60 min' }
           ]
         },
         {
@@ -112,7 +112,7 @@ export default function ExamPrepHub() {
           pathName: 'Modern Languages (Go & Swift)',
           pathDescription: 'Cloud-native and Mobile development',
           exams: [
-            { name: 'Go (Golang) Certified Engineer', path: '/programming/golang-associate', status: 'Available', questions: 40, duration: '60 min' },
+            { name: 'Go (Golang) Certified Engineer', path: '/programming/golang-associate', status: 'Coming Soon', questions: 40, duration: '60 min' },
             { name: 'App Development with Swift (Apple)', path: '/programming/swift-app-dev', status: 'Coming Soon', questions: 45, duration: '60 min' }
           ]
         }
