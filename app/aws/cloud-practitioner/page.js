@@ -160,12 +160,11 @@ export default function AWSExam() {
     const results = calculateResults();
     
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 p-8">
-        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl p-8">
-          {/* Back Button */}
-          <a href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-6 transition-colors">
-            <span className="mr-2">←</span> Back to Exam List
-          </a>
+      <div className="max-w-4xl mx-auto p-6">
+        {/* Back Button */}
+        <a href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-6 transition-colors">
+          <span className="mr-2">←</span> Back to Exam List
+        </a>
 
           <div className="text-center mb-8">
             {results.passed ? <Award className="w-24 h-24 mx-auto mb-4 text-green-500" /> : <XCircle className="w-24 h-24 mx-auto mb-4 text-red-500" />}
@@ -317,71 +316,137 @@ export default function AWSExam() {
   const answeredCount = Object.keys(answers).length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 p-4">
-      <div className="max-w-4xl mx-auto">
-        {/* Back Button */}
-        <a href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-4 transition-colors">
-          <span className="mr-2">←</span> Back to Exam List
-        </a>
+    <div className="max-w-4xl mx-auto p-6">
+      {/* Back Button */}
+      <a href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-4 transition-colors">
+        <span className="mr-2">←</span> Back to Exam List
+      </a>
 
-        <div className="bg-white rounded-lg shadow-md p-6 mb-4">
-          <div className="flex justify-between items-center mb-4">
-            <h1 className="text-2xl font-bold text-gray-800">AWS Cloud Practitioner Exam Prep</h1>
-            <div className="text-right">
-              <p className={`text-2xl font-bold ${timeRemaining < 600 ? 'text-red-600' : 'text-blue-600'}`}>{formatTime(timeRemaining)}</p>
-              <p className="text-sm text-gray-500">Time Remaining</p>
-            </div>
-          </div>
-          <div className="flex justify-between text-sm text-gray-600 mb-2">
-            <span>Question {currentQuestion + 1} of {questions.length}</span>
-            <span>Answered: {answeredCount} / {questions.length}</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className="bg-blue-600 h-2 rounded-full transition-all duration-300" style={{width: `${progress}%`}}></div>
+      {/* Header */}
+      <div className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-lg p-6 mb-6 shadow-lg">
+        <h1 className="text-3xl font-bold mb-2">AWS Cloud Practitioner Practice Exam</h1>
+        <p className="text-orange-100">65 Questions | 90 Minutes | Passing Score: 700/1000</p>
+      </div>
+
+      {/* Timer and Progress */}
+      <div className="grid grid-cols-3 gap-4 mb-6">
+        <div className="bg-white rounded-lg shadow p-4">
+          <div className="text-sm text-gray-600 mb-1">Time Remaining</div>
+          <div className={`text-2xl font-bold ${timeRemaining < 600 ? 'text-red-600' : 'text-gray-900'}`}>
+            {formatTime(timeRemaining)}
           </div>
         </div>
-
-        <div className="bg-white rounded-lg shadow-md p-8 mb-4">
-          <div className="mb-6">
-            <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold mb-4">{q.cat}</span>
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">{q.text}</h2>
+        <div className="bg-white rounded-lg shadow p-4">
+          <div className="text-sm text-gray-600 mb-1">Question</div>
+          <div className="text-2xl font-bold text-gray-900">
+            {currentQuestion + 1} / {questions.length}
           </div>
+        </div>
+        <div className="bg-white rounded-lg shadow p-4">
+          <div className="text-sm text-gray-600 mb-1">Answered</div>
+          <div className="text-2xl font-bold text-gray-900">
+            {answeredCount} / {questions.length}
+          </div>
+        </div>
+      </div>
 
-          <div className="space-y-3">
-            {q.opts.map((option, index) => (
-              <button key={index} onClick={() => handleAnswer(index)} className={`w-full text-left p-4 rounded-lg border-2 transition-all ${answers[currentQuestion] === index ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'}`}>
-                <div className="flex items-center">
-                  <span className={`w-6 h-6 rounded-full border-2 mr-3 flex items-center justify-center ${answers[currentQuestion] === index ? 'border-blue-500 bg-blue-500' : 'border-gray-300'}`}>
-                    {answers[currentQuestion] === index && <CheckCircle className="w-4 h-4 text-white" />}
-                  </span>
-                  <span className="flex-1 text-gray-900 font-medium">{option}</span>
+      {/* Progress Bar */}
+      <div className="bg-gray-200 rounded-full h-2 mb-6">
+        <div 
+          className="bg-gradient-to-r from-orange-500 to-yellow-500 h-2 rounded-full transition-all duration-300"
+          style={{width: `${progress}%`}}
+        />
+      </div>
+
+      {/* Question Card */}
+      <div className="bg-white rounded-lg shadow-lg p-8 mb-6">
+        <div className="mb-4">
+          <span className="inline-block bg-orange-100 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full">
+            {q.cat}
+          </span>
+        </div>
+        
+        <h2 className="text-xl font-bold mb-6 text-gray-900 leading-relaxed">
+          {q.text}
+        </h2>
+
+        <div className="space-y-3">
+          {q.opts.map((option, index) => (
+            <button
+              key={index}
+              onClick={() => handleAnswer(index)}
+              className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
+                answers[currentQuestion] === index
+                  ? 'border-orange-600 bg-orange-50 font-medium'
+                  : 'border-gray-200 hover:border-orange-300 hover:bg-gray-50'
+              }`}
+            >
+              <div className="flex items-center">
+                <div className={`w-6 h-6 rounded-full border-2 mr-3 flex items-center justify-center ${
+                  answers[currentQuestion] === index
+                    ? 'border-orange-600 bg-orange-600'
+                    : 'border-gray-300'
+                }`}>
+                  {answers[currentQuestion] === index && (
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  )}
                 </div>
-              </button>
-            ))}
-          </div>
+                <span className="text-gray-900">{option}</span>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
 
-          {answers[currentQuestion] !== undefined && (
-            <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <p className="text-sm text-blue-800"><strong>Hint:</strong> {q.hint}</p>
-            </div>
-          )}
+      {/* Navigation */}
+      <div className="flex justify-between items-center gap-4">
+        <button
+          onClick={() => setCurrentQuestion(Math.max(0, currentQuestion - 1))}
+          disabled={currentQuestion === 0}
+          className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+        >
+          ← Previous
+        </button>
+
+        <div className="flex gap-2 flex-wrap justify-center max-w-2xl">
+          {questions.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentQuestion(idx)}
+              className={`w-10 h-10 rounded-lg font-medium text-sm ${
+                currentQuestion === idx
+                  ? 'bg-orange-600 text-white'
+                  : answers[idx] !== undefined
+                  ? 'bg-green-100 text-green-800 border border-green-300'
+                  : 'bg-gray-100 text-gray-600 border border-gray-300'
+              } hover:opacity-80`}
+            >
+              {idx + 1}
+            </button>
+          ))}
         </div>
 
-        <div className="flex justify-between">
-          <button onClick={() => setCurrentQuestion(Math.max(0, currentQuestion - 1))} disabled={currentQuestion === 0} className="px-6 py-3 bg-gray-300 text-gray-700 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-400 transition">
-            ← Previous
+        {currentQuestion === questions.length - 1 ? (
+          <button
+            onClick={handleSubmit}
+            className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium"
+          >
+            Submit Exam
           </button>
-          
-          {currentQuestion < questions.length - 1 ? (
-            <button onClick={() => setCurrentQuestion(currentQuestion + 1)} className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">
-              Next →
-            </button>
-          ) : (
-            <button onClick={handleSubmit} className="px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition">
-              Submit Exam
-            </button>
-          )}
-        </div>
+        ) : (
+          <button
+            onClick={() => setCurrentQuestion(Math.min(questions.length - 1, currentQuestion + 1))}
+            className="px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 font-medium"
+          >
+            Next →
+          </button>
+        )}
+      </div>
+
+      {/* Quick Stats */}
+      <div className="mt-6 bg-gray-50 rounded-lg p-4 text-center text-sm text-gray-600">
+        <p>💡 Tip: You can jump to any question using the number buttons above</p>
+        <p className="mt-2">⏰ Make sure to pace yourself - that's about 1.4 minutes per question</p>
       </div>
     </div>
   );
