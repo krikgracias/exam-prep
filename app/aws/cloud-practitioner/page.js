@@ -307,7 +307,6 @@ export default function AWSExam() {
             ← Back to Exam List
           </a>
         </div>
-      </div>
     );
   }
 
