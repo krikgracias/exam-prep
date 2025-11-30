@@ -72,8 +72,8 @@ const examCategories = [
     exams: [
       { name: 'RHCSA (Red Hat Certified System Administrator)', path: '/linux/rhcsa', status: 'Coming Soon', questions: 80 },
       { name: 'LFCS (Linux Foundation Certified SysAdmin)', path: '/linux/lfcs', status: 'Coming Soon', questions: 60 },
-      { name: 'Kubernetes CKA', path: '/devops/cka', status: 'Coming Soon', questions: 15 },
-      { name: 'Kubernetes CKAD', path: '/devops/ckad', status: 'Coming Soon', questions: 15 },
+      { name: 'Kubernetes CKA', path: '/devops/cka', status: 'Available', questions: 15 },
+      { name: 'Kubernetes CKAD', path: '/devops/ckad', status: 'Available', questions: 15 },
       { name: 'Terraform Associate', path: '/devops/terraform-associate', status: 'Coming Soon', questions: 57 },
       { name: 'Docker Certified Associate', path: '/devops/docker-dca', status: 'Coming Soon', questions: 55 }
     ]
@@ -86,7 +86,7 @@ const examCategories = [
       { name: 'CISSP', path: '/security/cissp', status: 'Coming Soon', questions: 125 },
       { name: 'CEH (Certified Ethical Hacker)', path: '/security/ceh', status: 'Coming Soon', questions: 125 },
       { name: 'CISM', path: '/security/cism', status: 'Coming Soon', questions: 150 },
-      { name: 'Security+ (SY0-701)', path: '/comptia/security-plus', status: 'Coming Soon', questions: 90 }
+      //{ name: 'Security+ (SY0-701)', path: '/comptia/security-plus', status: 'Coming Soon', questions: 90 }
     ]
   }
 ];
