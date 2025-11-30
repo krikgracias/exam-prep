@@ -4,159 +4,213 @@ import Link from 'next/link';
 import { Award, Cloud, Server, Database, Shield, BookOpen, Terminal, Network, ShieldCheck } from 'lucide-react';
 
 export default function ExamPrepHub() {
-const examCategories = [
-  {
-    name: 'AWS Certifications',
-    icon: Cloud,
-    color: 'bg-orange-500',
-    description: 'Amazon Web Services - 13 Certification Paths',
-    paths: [
-      {
-        pathName: 'Foundational',
-        pathDescription: 'Start here - No prerequisites',
-        exams: [
-          { name: 'Cloud Practitioner (CLF-C02)', path: '/aws/cloud-practitioner', status: 'Available', questions: 65, duration: '90 min', cost: '$100' }
-        ]
-      },
-      {
-        pathName: 'Associate Level',
-        pathDescription: 'Choose based on your role - Cloud Practitioner recommended',
-        exams: [
-          { name: 'Solutions Architect Associate (SAA-C03)', path: '/aws/solutions-architect-associate', status: 'Coming Soon', questions: 65, duration: '130 min', cost: '$150', recommended: 'Architects, SREs' },
-          { name: 'Developer Associate (DVA-C02)', path: '/aws/developer-associate', status: 'Coming Soon', questions: 65, duration: '130 min', cost: '$150', recommended: 'Developers' },
-          { name: 'SysOps Administrator Associate (SOA-C02)', path: '/aws/sysops-administrator', status: 'Coming Soon', questions: 65, duration: '130 min', cost: '$150', recommended: 'SysAdmins, SREs' },
-          { name: 'Data Engineer Associate (DEA-C01)', path: '/aws/data-engineer-associate', status: 'Coming Soon', questions: 85, duration: '170 min', cost: '$150', recommended: 'Data Engineers' }
-        ]
-      },
-      {
-        pathName: 'Professional Level',
-        pathDescription: 'Advanced certifications - Associate level required',
-        exams: [
-          { name: 'Solutions Architect Professional (SAP-C02)', path: '/aws/solutions-architect-professional', status: 'Coming Soon', questions: 75, duration: '180 min', cost: '$300', prereq: 'SAA-C03' },
-          { name: 'DevOps Engineer Professional (DOP-C02)', path: '/aws/devops-engineer-professional', status: 'Coming Soon', questions: 75, duration: '180 min', cost: '$300', prereq: 'DVA-C02 or SOA-C02' }
-        ]
-      },
-      {
-        pathName: 'Specialty Certifications',
-        pathDescription: 'Deep expertise in specific domains',
-        exams: [
-          { name: 'Advanced Networking Specialty (ANS-C01)', path: '/aws/advanced-networking-specialty', status: 'Coming Soon', questions: 65, duration: '170 min', cost: '$300', recommended: 'Network Engineers' },
-          { name: 'Security Specialty (SCS-C02)', path: '/aws/security-specialty', status: 'Coming Soon', questions: 65, duration: '170 min', cost: '$300', recommended: 'Security Engineers' },
-          { name: 'Machine Learning Specialty (MLS-C01)', path: '/aws/machine-learning-specialty', status: 'Coming Soon', questions: 65, duration: '180 min', cost: '$300', recommended: 'ML Engineers' },
-          { name: 'Data Analytics Specialty (DAS-C01)', path: '/aws/data-analytics-specialty', status: 'Coming Soon', questions: 65, duration: '180 min', cost: '$300', recommended: 'Data Analysts' },
-          { name: 'Database Specialty (DBS-C01)', path: '/aws/database-specialty', status: 'Coming Soon', questions: 65, duration: '180 min', cost: '$300', recommended: 'DBAs' },
-          { name: 'SAP on AWS Specialty (PAS-C01)', path: '/aws/sap-on-aws-specialty', status: 'Coming Soon', questions: 65, duration: '170 min', cost: '$300', recommended: 'SAP Consultants' }
-        ]
-      }
-    ],
-    recommendedPaths: [
-      {
-        title: 'Cloud Architecture Path',
-        sequence: ['Cloud Practitioner', 'Solutions Architect Associate', 'Solutions Architect Professional', 'Choose Specialty: Networking/Security/Database']
-      },
-      {
-        title: 'Development Path',
-        sequence: ['Cloud Practitioner', 'Developer Associate', 'DevOps Engineer Professional', 'Choose Specialty: ML/Data Analytics']
-      },
-      {
-        title: 'SRE/Operations Path',
-        sequence: ['Cloud Practitioner', 'SysOps Administrator Associate', 'DevOps Engineer Professional', 'Choose Specialty: Networking/Security']
-      },
-      {
-        title: 'Data Engineering Path',
-        sequence: ['Cloud Practitioner', 'Data Engineer Associate', 'Choose Specialty: Data Analytics/Database/ML']
-      }
-    ]
-  },
-  {
-    name: 'CompTIA Certifications',
-    icon: Shield,
-    color: 'bg-red-500',
-    exams: [
-      { name: 'A+ Core 1 (220-1101)', path: '/comptia/a-plus-core1', status: 'Coming Soon', questions: 90 },
-      { name: 'A+ Core 2 (220-1102)', path: '/comptia/a-plus-core2', status: 'Coming Soon', questions: 90 },
-      { name: 'Network+ (N10-008)', path: '/comptia/network-plus', status: 'Available', questions: 90 },
-      { name: 'Security+ (SY0-701)', path: '/comptia/security-plus', status: 'Coming Soon', questions: 90 },
-      { name: 'Project+ (PK0-005)', path: '/comptia/project-plus', status: 'Available', questions: 90 },
-      { name: 'Linux+ (XK0-005)', path: '/comptia/linux-plus', status: 'Available', questions: 90 },
-      { name: 'Data+ (DA0-001)', path: '/comptia/data-plus', status: 'Available', questions: 90 },
-      { name: 'Cloud+ (CV0-004)', path: '/comptia/cloud-plus', status: 'Coming Soon', questions: 90 },
-      { name: 'CySA+ (CS0-003)', path: '/comptia/cysa-plus', status: 'Coming Soon', questions: 85 }
-    ]
-  },
-  {
-    name: 'Microsoft Certifications',
-    icon: Server,
-    color: 'bg-blue-600',
-    exams: [
-      { name: 'Azure Fundamentals (AZ-900)', path: '/microsoft/az-900', status: 'Coming Soon', questions: 60 },
-      { name: 'Azure Administrator (AZ-104)', path: '/microsoft/az-104', status: 'Coming Soon', questions: 60 },
-      { name: 'Azure Security Engineer (AZ-500)', path: '/microsoft/az-500', status: 'Coming Soon', questions: 60 },
-      { name: 'Azure Data Fundamentals (DP-900)', path: '/microsoft/dp-900', status: 'Available', questions: 60 },
-      { name: 'Administering Azure SQL (DP-300)', path: '/microsoft/dp-300', status: 'Available', questions: 60 },
-      { name: 'Microsoft 365 Fundamentals (MS-900)', path: '/microsoft/ms-900', status: 'Coming Soon', questions: 60 }
-    ]
-  },
-  {
-    name: 'Google Cloud Certifications',
-    icon: Database,
-    color: 'bg-blue-500',
-    exams: [
-      { name: 'Cloud Digital Leader', path: '/google/cloud-digital-leader', status: 'Coming Soon', questions: 50 },
-      { name: 'Associate Cloud Engineer', path: '/google/associate-cloud-engineer', status: 'Coming Soon', questions: 50 },
-      { name: 'Professional Cloud Architect', path: '/google/professional-cloud-architect', status: 'Coming Soon', questions: 50 },
-      { name: 'Professional Data Engineer', path: '/google/professional-data-engineer', status: 'Coming Soon', questions: 50 }
-    ]
-  },
-  {
-    name: 'Cisco Certifications',
-    icon: Network,
-    color: 'bg-cyan-600',
-    exams: [
-      { name: 'CCNA (200-301)', path: '/cisco/ccna', status: 'Coming Soon', questions: 100 },
-      { name: 'CCNP Enterprise', path: '/cisco/ccnp-enterprise', status: 'Coming Soon', questions: 90 },
-      { name: 'CyberOps Associate', path: '/cisco/cyberops-associate', status: 'Coming Soon', questions: 100 }
-    ]
-  },
-  {
-    name: 'Linux & DevOps Certifications',
-    icon: Terminal,
-    color: 'bg-green-600',
-    exams: [
-      { name: 'RHCSA (Red Hat Certified System Administrator)', path: '/linux/rhcsa', status: 'Coming Soon', questions: 80 },
-      { name: 'LFCS (Linux Foundation Certified SysAdmin)', path: '/linux/lfcs', status: 'Coming Soon', questions: 60 },
-      { name: 'Kubernetes CKA', path: '/devops/cka', status: 'Available', questions: 20 },
-      { name: 'Kubernetes CKAD', path: '/devops/ckad', status: 'Available', questions: 20 },
-      { name: 'Terraform Associate', path: '/devops/terraform-associate', status: 'Available', questions: 57 },
-      { name: 'Docker Certified Associate', path: '/devops/docker-dca', status: 'Coming Soon', questions: 55 }
-    ]
-  },
-  {
-    name: 'Security Certifications',
-    icon: ShieldCheck,
-    color: 'bg-purple-600',
-    exams: [
-      { name: 'CISSP', path: '/security/cissp', status: 'Coming Soon', questions: 125 },
-      { name: 'CEH (Certified Ethical Hacker)', path: '/security/ceh', status: 'Coming Soon', questions: 125 },
-      { name: 'CISM', path: '/security/cism', status: 'Coming Soon', questions: 150 },
-      { name: 'Security+ (SY0-701)', path: '/comptia/security-plus', status: 'Coming Soon', questions: 90 }
-    ]
-  }
-];
+  const examCategories = [
+    {
+      name: 'AWS Certifications',
+      icon: Cloud,
+      color: 'bg-orange-500',
+      description: 'Amazon Web Services - 13 Certification Paths',
+      // AWS uses "paths" array
+      paths: [
+        {
+          pathName: 'Foundational',
+          pathDescription: 'Start here - No prerequisites',
+          exams: [
+            { name: 'Cloud Practitioner (CLF-C02)', path: '/aws/cloud-practitioner', status: 'Available', questions: 65, duration: '90 min', cost: '$100' }
+          ]
+        },
+        {
+          pathName: 'Associate Level',
+          pathDescription: 'Choose based on your role - Cloud Practitioner recommended',
+          exams: [
+            { name: 'Solutions Architect Associate (SAA-C03)', path: '/aws/solutions-architect-associate', status: 'Coming Soon', questions: 65, duration: '130 min', cost: '$150', recommended: 'Architects, SREs' },
+            { name: 'Developer Associate (DVA-C02)', path: '/aws/developer-associate', status: 'Coming Soon', questions: 65, duration: '130 min', cost: '$150', recommended: 'Developers' },
+            { name: 'SysOps Administrator Associate (SOA-C02)', path: '/aws/sysops-administrator', status: 'Coming Soon', questions: 65, duration: '130 min', cost: '$150', recommended: 'SysAdmins, SREs' },
+            { name: 'Data Engineer Associate (DEA-C01)', path: '/aws/data-engineer-associate', status: 'Coming Soon', questions: 85, duration: '170 min', cost: '$150', recommended: 'Data Engineers' }
+          ]
+        },
+        {
+          pathName: 'Professional Level',
+          pathDescription: 'Advanced certifications - Associate level required',
+          exams: [
+            { name: 'Solutions Architect Professional (SAP-C02)', path: '/aws/solutions-architect-professional', status: 'Coming Soon', questions: 75, duration: '180 min', cost: '$300', prereq: 'SAA-C03' },
+            { name: 'DevOps Engineer Professional (DOP-C02)', path: '/aws/devops-engineer-professional', status: 'Coming Soon', questions: 75, duration: '180 min', cost: '$300', prereq: 'DVA-C02 or SOA-C02' }
+          ]
+        },
+        {
+          pathName: 'Specialty Certifications',
+          pathDescription: 'Deep expertise in specific domains',
+          exams: [
+            { name: 'Advanced Networking Specialty (ANS-C01)', path: '/aws/advanced-networking-specialty', status: 'Coming Soon', questions: 65, duration: '170 min', cost: '$300', recommended: 'Network Engineers' },
+            { name: 'Security Specialty (SCS-C02)', path: '/aws/security-specialty', status: 'Coming Soon', questions: 65, duration: '170 min', cost: '$300', recommended: 'Security Engineers' },
+            { name: 'Machine Learning Specialty (MLS-C01)', path: '/aws/machine-learning-specialty', status: 'Coming Soon', questions: 65, duration: '180 min', cost: '$300', recommended: 'ML Engineers' },
+            { name: 'Data Analytics Specialty (DAS-C01)', path: '/aws/data-analytics-specialty', status: 'Coming Soon', questions: 65, duration: '180 min', cost: '$300', recommended: 'Data Analysts' },
+            { name: 'Database Specialty (DBS-C01)', path: '/aws/database-specialty', status: 'Coming Soon', questions: 65, duration: '180 min', cost: '$300', recommended: 'DBAs' },
+            { name: 'SAP on AWS Specialty (PAS-C01)', path: '/aws/sap-on-aws-specialty', status: 'Coming Soon', questions: 65, duration: '170 min', cost: '$300', recommended: 'SAP Consultants' }
+          ]
+        }
+      ],
+      recommendedPaths: [
+        {
+          title: 'Cloud Architecture Path',
+          sequence: ['Cloud Practitioner', 'Solutions Architect Associate', 'Solutions Architect Professional', 'Choose Specialty: Networking/Security/Database']
+        },
+        {
+          title: 'Development Path',
+          sequence: ['Cloud Practitioner', 'Developer Associate', 'DevOps Engineer Professional', 'Choose Specialty: ML/Data Analytics']
+        },
+        {
+          title: 'SRE/Operations Path',
+          sequence: ['Cloud Practitioner', 'SysOps Administrator Associate', 'DevOps Engineer Professional', 'Choose Specialty: Networking/Security']
+        },
+        {
+          title: 'Data Engineering Path',
+          sequence: ['Cloud Practitioner', 'Data Engineer Associate', 'Choose Specialty: Data Analytics/Database/ML']
+        }
+      ]
+    },
+    {
+      name: 'CompTIA Certifications',
+      icon: Shield,
+      color: 'bg-red-500',
+      // Others use "exams" array directly
+      exams: [
+        { name: 'A+ Core 1 (220-1101)', path: '/comptia/a-plus-core1', status: 'Coming Soon', questions: 90 },
+        { name: 'A+ Core 2 (220-1102)', path: '/comptia/a-plus-core2', status: 'Coming Soon', questions: 90 },
+        { name: 'Network+ (N10-008)', path: '/comptia/network-plus', status: 'Available', questions: 90 },
+        { name: 'Security+ (SY0-701)', path: '/comptia/security-plus', status: 'Coming Soon', questions: 90 },
+        { name: 'Project+ (PK0-005)', path: '/comptia/project-plus', status: 'Available', questions: 90 },
+        { name: 'Linux+ (XK0-005)', path: '/comptia/linux-plus', status: 'Available', questions: 90 },
+        { name: 'Data+ (DA0-001)', path: '/comptia/data-plus', status: 'Available', questions: 90 },
+        { name: 'Cloud+ (CV0-004)', path: '/comptia/cloud-plus', status: 'Coming Soon', questions: 90 },
+        { name: 'CySA+ (CS0-003)', path: '/comptia/cysa-plus', status: 'Coming Soon', questions: 85 }
+      ]
+    },
+    {
+      name: 'Microsoft Certifications',
+      icon: Server,
+      color: 'bg-blue-600',
+      exams: [
+        { name: 'Azure Fundamentals (AZ-900)', path: '/microsoft/az-900', status: 'Coming Soon', questions: 60 },
+        { name: 'Azure Administrator (AZ-104)', path: '/microsoft/az-104', status: 'Coming Soon', questions: 60 },
+        { name: 'Azure Security Engineer (AZ-500)', path: '/microsoft/az-500', status: 'Coming Soon', questions: 60 },
+        { name: 'Azure Data Fundamentals (DP-900)', path: '/microsoft/dp-900', status: 'Available', questions: 60 },
+        { name: 'Administering Azure SQL (DP-300)', path: '/microsoft/dp-300', status: 'Available', questions: 60 },
+        { name: 'Microsoft 365 Fundamentals (MS-900)', path: '/microsoft/ms-900', status: 'Coming Soon', questions: 60 }
+      ]
+    },
+    {
+      name: 'Google Cloud Certifications',
+      icon: Database,
+      color: 'bg-blue-500',
+      exams: [
+        { name: 'Cloud Digital Leader', path: '/google/cloud-digital-leader', status: 'Coming Soon', questions: 50 },
+        { name: 'Associate Cloud Engineer', path: '/google/associate-cloud-engineer', status: 'Coming Soon', questions: 50 },
+        { name: 'Professional Cloud Architect', path: '/google/professional-cloud-architect', status: 'Coming Soon', questions: 50 },
+        { name: 'Professional Data Engineer', path: '/google/professional-data-engineer', status: 'Coming Soon', questions: 50 }
+      ]
+    },
+    {
+      name: 'Cisco Certifications',
+      icon: Network,
+      color: 'bg-cyan-600',
+      exams: [
+        { name: 'CCNA (200-301)', path: '/cisco/ccna', status: 'Coming Soon', questions: 100 },
+        { name: 'CCNP Enterprise', path: '/cisco/ccnp-enterprise', status: 'Coming Soon', questions: 90 },
+        { name: 'CyberOps Associate', path: '/cisco/cyberops-associate', status: 'Coming Soon', questions: 100 }
+      ]
+    },
+    {
+      name: 'Linux & DevOps Certifications',
+      icon: Terminal,
+      color: 'bg-green-600',
+      exams: [
+        { name: 'RHCSA (Red Hat Certified System Administrator)', path: '/linux/rhcsa', status: 'Coming Soon', questions: 80 },
+        { name: 'LFCS (Linux Foundation Certified SysAdmin)', path: '/linux/lfcs', status: 'Coming Soon', questions: 60 },
+        { name: 'Kubernetes CKA', path: '/devops/cka', status: 'Available', questions: 20 },
+        { name: 'Kubernetes CKAD', path: '/devops/ckad', status: 'Available', questions: 20 },
+        { name: 'Terraform Associate', path: '/devops/terraform-associate', status: 'Available', questions: 57 },
+        { name: 'Docker Certified Associate', path: '/devops/docker-dca', status: 'Coming Soon', questions: 55 }
+      ]
+    },
+    {
+      name: 'Security Certifications',
+      icon: ShieldCheck,
+      color: 'bg-purple-600',
+      exams: [
+        { name: 'CISSP', path: '/security/cissp', status: 'Coming Soon', questions: 125 },
+        { name: 'CEH (Certified Ethical Hacker)', path: '/security/ceh', status: 'Coming Soon', questions: 125 },
+        { name: 'CISM', path: '/security/cism', status: 'Coming Soon', questions: 150 },
+        { name: 'Security+ (SY0-701)', path: '/comptia/security-plus', status: 'Coming Soon', questions: 90 }
+      ]
+    }
+  ];
 
-  // --- DYNAMIC CALCULATIONS START HERE ---
-  
-  // 1. Count total categories (Tracks)
+  // --- 1. DYNAMIC COUNT LOGIC ---
   const totalTracks = examCategories.length;
 
-  // 2. Count total exams marked as 'Available' across all categories
   const availableExamsCount = examCategories.reduce((total, category) => {
-    // Filter the exams in this category to find 'Available' ones, and add that count to the total
-    const categoryAvailableCount = category.exams.filter(exam => exam.status === 'Available').length;
-    return total + categoryAvailableCount;
+    let count = 0;
+    
+    // Case 1: Simple list of exams (CompTIA, Microsoft, etc.)
+    if (category.exams) {
+      count += category.exams.filter(exam => exam.status === 'Available').length;
+    }
+    
+    // Case 2: Nested paths (AWS)
+    if (category.paths) {
+      category.paths.forEach(path => {
+        if (path.exams) {
+          count += path.exams.filter(exam => exam.status === 'Available').length;
+        }
+      });
+    }
+    
+    return total + count;
   }, 0);
 
-  // --- CALCULATIONS END ---
+
+  // --- Helper Component to render a single exam row (to avoid code duplication) ---
+  const ExamRow = ({ exam }) => (
+    <div className="p-6 hover:bg-gray-50 transition border-b last:border-b-0">
+      <div className="flex items-center justify-between">
+        <div className="flex-1">
+          <h3 className="text-lg font-semibold text-gray-900 mb-1">{exam.name}</h3>
+          <div className="flex items-center gap-4 text-sm text-gray-600">
+            <span className="flex items-center gap-1">
+              <BookOpen className="w-4 h-4" />
+              {exam.questions} questions
+            </span>
+            <span className={`px-2 py-1 rounded text-xs font-semibold ${
+              exam.status === 'Available' 
+                ? 'bg-green-100 text-green-800' 
+                : 'bg-gray-100 text-gray-600'
+            }`}>
+              {exam.status}
+            </span>
+            {/* Show extra details if they exist */}
+            {exam.duration && <span className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded">⏱ {exam.duration}</span>}
+          </div>
+        </div>
+
+        {exam.status === 'Available' ? (
+          <Link 
+            href={exam.path}
+            className="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
+          >
+            Start Exam →
+          </Link>
+        ) : (
+          <button 
+            disabled
+            className="px-6 py-2 bg-gray-200 text-gray-500 rounded-lg font-semibold cursor-not-allowed"
+          >
+            Coming Soon
+          </button>
+        )}
+      </div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -174,14 +228,12 @@ const examCategories = [
 
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {/* Dynamic Available Exams Count */}
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <BookOpen className="w-12 h-12 mx-auto mb-3 text-blue-600" />
             <div className="text-3xl font-bold text-gray-900">{availableExamsCount}</div>
             <div className="text-gray-600">Available Exams</div>
           </div>
 
-          {/* Dynamic Certification Tracks Count */}
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <Award className="w-12 h-12 mx-auto mb-3 text-green-600" />
             <div className="text-3xl font-bold text-gray-900">{totalTracks}</div>
@@ -202,47 +254,33 @@ const examCategories = [
               <div key={category.name} className="bg-white rounded-lg shadow-md overflow-hidden">
                 <div className={`${category.color} text-white px-6 py-4 flex items-center gap-3`}>
                   <Icon className="w-8 h-8" />
-                  <h2 className="text-2xl font-bold">{category.name}</h2>
+                  <div>
+                    <h2 className="text-2xl font-bold">{category.name}</h2>
+                    {category.description && <p className="text-white/90 text-sm font-normal">{category.description}</p>}
+                  </div>
                 </div>
 
                 <div className="divide-y">
-                  {category.exams.map((exam) => (
-                    <div key={exam.path} className="p-6 hover:bg-gray-50 transition">
-                      <div className="flex items-center justify-between">
-                        <div className="flex-1">
-                          <h3 className="text-lg font-semibold text-gray-900 mb-1">{exam.name}</h3>
-                          <div className="flex items-center gap-4 text-sm text-gray-600">
-                            <span className="flex items-center gap-1">
-                              <BookOpen className="w-4 h-4" />
-                              {exam.questions} questions
-                            </span>
-                            <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                              exam.status === 'Available' 
-                                ? 'bg-green-100 text-green-800' 
-                                : 'bg-gray-100 text-gray-600'
-                            }`}>
-                              {exam.status}
-                            </span>
-                          </div>
-                        </div>
-
-                        {exam.status === 'Available' ? (
-                          <Link 
-                            href={exam.path}
-                            className="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
-                          >
-                            Start Exam →
-                          </Link>
-                        ) : (
-                          <button 
-                            disabled
-                            className="px-6 py-2 bg-gray-200 text-gray-500 rounded-lg font-semibold cursor-not-allowed"
-                          >
-                            Coming Soon
-                          </button>
-                        )}
+                  {/* LOGIC TO RENDER EITHER PATHS (AWS) OR DIRECT EXAMS (OTHERS) */}
+                  
+                  {/* 1. If it has paths (Like AWS), loop through paths then exams */}
+                  {category.paths && category.paths.map((path) => (
+                    <div key={path.pathName} className="border-b last:border-b-0">
+                      {/* Optional: Add a sub-header for the path like "Associate Level" */}
+                      <div className="bg-gray-50 px-6 py-2 border-b border-gray-100">
+                        <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider">{path.pathName}</h3>
+                        {path.pathDescription && <p className="text-xs text-gray-400">{path.pathDescription}</p>}
                       </div>
+                      
+                      {path.exams.map((exam) => (
+                        <ExamRow key={exam.name} exam={exam} />
+                      ))}
                     </div>
+                  ))}
+
+                  {/* 2. If it has direct exams (Like CompTIA), loop exams directly */}
+                  {category.exams && category.exams.map((exam) => (
+                    <ExamRow key={exam.name} exam={exam} />
                   ))}
                 </div>
               </div>
