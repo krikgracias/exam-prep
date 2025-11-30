@@ -4,48 +4,92 @@ import Link from 'next/link';
 import { Award, Cloud, Server, Database, Shield, BookOpen } from 'lucide-react';
 
 export default function ExamPrepHub() {
-  const examCategories = [
-    {
-      name: 'AWS Certifications',
-      icon: Cloud,
-      color: 'bg-orange-500',
-      exams: [
-        { name: 'Cloud Practitioner', path: '/aws/cloud-practitioner', status: 'Available', questions: 65 },
-        { name: 'Solutions Architect Associate', path: '/aws/solutions-architect', status: 'Coming Soon', questions: 65 },
-        { name: 'Developer Associate', path: '/aws/developer', status: 'Coming Soon', questions: 65 }
-      ]
-    },
-    {
-      name: 'CompTIA Certifications',
-      icon: Shield,
-      color: 'bg-red-500',
-      exams: [
-        { name: 'A+ Core 1 (220-1101)', path: '/comptia/a-plus-core1', status: 'Coming Soon', questions: 90 },
-        { name: 'A+ Core 2 (220-1102)', path: '/comptia/a-plus-core2', status: 'Coming Soon', questions: 90 },
-        { name: 'Network+ (N10-008)', path: '/comptia/network-plus', status: 'Available', questions: 90 },
-        { name: 'Project+ (PK0-005)', path: '/comptia/project-plus', status: 'Available', questions: 90 },
-        { name: 'Security+ (SY0-701)', path: '/comptia/security-plus', status: 'Coming Soon', questions: 90 }
-      ]
-    },
-    {
-      name: 'Google Cloud Certifications',
-      icon: Database,
-      color: 'bg-blue-500',
-      exams: [
-        { name: 'Associate Cloud Engineer', path: '/google/associate-cloud-engineer', status: 'Coming Soon', questions: 50 },
-        { name: 'Professional Cloud Architect', path: '/google/professional-cloud-architect', status: 'Coming Soon', questions: 50 }
-      ]
-    },
-    {
-      name: 'Microsoft Certifications',
-      icon: Server,
-      color: 'bg-blue-600',
-      exams: [
-        { name: 'Azure Fundamentals (AZ-900)', path: '/microsoft/az-900', status: 'Coming Soon', questions: 60 },
-        { name: 'Azure Administrator (AZ-104)', path: '/microsoft/az-104', status: 'Coming Soon', questions: 60 }
-      ]
-    }
-  ];
+const examCategories = [
+  {
+    name: 'AWS Certifications',
+    icon: Cloud,
+    color: 'bg-orange-500',
+    exams: [
+      { name: 'Cloud Practitioner', path: '/aws/cloud-practitioner', status: 'Available', questions: 65 },
+      { name: 'Solutions Architect Associate', path: '/aws/solutions-architect-associate', status: 'Coming Soon', questions: 65 },
+      { name: 'Developer Associate', path: '/aws/developer-associate', status: 'Coming Soon', questions: 65 },
+      { name: 'SysOps Administrator Associate', path: '/aws/sysops-administrator', status: 'Coming Soon', questions: 65 }
+    ]
+  },
+  {
+    name: 'CompTIA Certifications',
+    icon: Shield,
+    color: 'bg-red-500',
+    exams: [
+      { name: 'A+ Core 1 (220-1101)', path: '/comptia/a-plus-core1', status: 'Coming Soon', questions: 90 },
+      { name: 'A+ Core 2 (220-1102)', path: '/comptia/a-plus-core2', status: 'Coming Soon', questions: 90 },
+      { name: 'Network+ (N10-008)', path: '/comptia/network-plus', status: 'Available', questions: 90 },
+      { name: 'Security+ (SY0-701)', path: '/comptia/security-plus', status: 'Coming Soon', questions: 90 },
+      { name: 'Project+ (PK0-005)', path: '/comptia/project-plus', status: 'Available', questions: 90 },
+      { name: 'Linux+ (XK0-005)', path: '/comptia/linux-plus', status: 'Coming Soon', questions: 90 },
+      { name: 'Cloud+ (CV0-004)', path: '/comptia/cloud-plus', status: 'Coming Soon', questions: 90 },
+      { name: 'CySA+ (CS0-003)', path: '/comptia/cysa-plus', status: 'Coming Soon', questions: 85 }
+    ]
+  },
+  {
+    name: 'Microsoft Certifications',
+    icon: Server,
+    color: 'bg-blue-600',
+    exams: [
+      { name: 'Azure Fundamentals (AZ-900)', path: '/microsoft/az-900', status: 'Coming Soon', questions: 60 },
+      { name: 'Azure Administrator (AZ-104)', path: '/microsoft/az-104', status: 'Coming Soon', questions: 60 },
+      { name: 'Azure Security Engineer (AZ-500)', path: '/microsoft/az-500', status: 'Coming Soon', questions: 60 },
+      { name: 'Azure Data Fundamentals (DP-900)', path: '/microsoft/dp-900', status: 'Coming Soon', questions: 60 },
+      { name: 'Administering Azure SQL (DP-300)', path: '/microsoft/dp-300', status: 'Coming Soon', questions: 60 },
+      { name: 'Microsoft 365 Fundamentals (MS-900)', path: '/microsoft/ms-900', status: 'Coming Soon', questions: 60 }
+    ]
+  },
+  {
+    name: 'Google Cloud Certifications',
+    icon: Database,
+    color: 'bg-blue-500',
+    exams: [
+      { name: 'Cloud Digital Leader', path: '/google/cloud-digital-leader', status: 'Coming Soon', questions: 50 },
+      { name: 'Associate Cloud Engineer', path: '/google/associate-cloud-engineer', status: 'Coming Soon', questions: 50 },
+      { name: 'Professional Cloud Architect', path: '/google/professional-cloud-architect', status: 'Coming Soon', questions: 50 },
+      { name: 'Professional Data Engineer', path: '/google/professional-data-engineer', status: 'Coming Soon', questions: 50 }
+    ]
+  },
+  {
+    name: 'Cisco Certifications',
+    icon: Network,
+    color: 'bg-cyan-600',
+    exams: [
+      { name: 'CCNA (200-301)', path: '/cisco/ccna', status: 'Coming Soon', questions: 100 },
+      { name: 'CCNP Enterprise', path: '/cisco/ccnp-enterprise', status: 'Coming Soon', questions: 90 },
+      { name: 'CyberOps Associate', path: '/cisco/cyberops-associate', status: 'Coming Soon', questions: 100 }
+    ]
+  },
+  {
+    name: 'Linux & DevOps Certifications',
+    icon: Terminal,
+    color: 'bg-green-600',
+    exams: [
+      { name: 'RHCSA (Red Hat Certified System Administrator)', path: '/linux/rhcsa', status: 'Coming Soon', questions: 80 },
+      { name: 'LFCS (Linux Foundation Certified SysAdmin)', path: '/linux/lfcs', status: 'Coming Soon', questions: 60 },
+      { name: 'Kubernetes CKA', path: '/devops/cka', status: 'Coming Soon', questions: 15 },
+      { name: 'Kubernetes CKAD', path: '/devops/ckad', status: 'Coming Soon', questions: 15 },
+      { name: 'Terraform Associate', path: '/devops/terraform-associate', status: 'Coming Soon', questions: 57 },
+      { name: 'Docker Certified Associate', path: '/devops/docker-dca', status: 'Coming Soon', questions: 55 }
+    ]
+  },
+  {
+    name: 'Security Certifications',
+    icon: ShieldCheck,
+    color: 'bg-purple-600',
+    exams: [
+      { name: 'CISSP', path: '/security/cissp', status: 'Coming Soon', questions: 125 },
+      { name: 'CEH (Certified Ethical Hacker)', path: '/security/ceh', status: 'Coming Soon', questions: 125 },
+      { name: 'CISM', path: '/security/cism', status: 'Coming Soon', questions: 150 },
+      { name: 'Security+ (SY0-701)', path: '/comptia/security-plus', status: 'Coming Soon', questions: 90 }
+    ]
+  }
+];
 
   // --- DYNAMIC CALCULATIONS START HERE ---
   
