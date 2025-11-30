@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Award, Cloud, Server, Database, Shield, BookOpen } from 'lucide-react';
+import { Award, Cloud, Server, Database, Shield, BookOpen, Terminal, Network } from 'lucide-react';
 
 export default function ExamPrepHub() {
 const examCategories = [
