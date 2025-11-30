@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Award, Cloud, Server, Database, Shield, BookOpen, Terminal, Network, ShieldCheck } from 'lucide-react';
+// Added 'Code' to the imports
+import { Award, Cloud, Server, Database, Shield, BookOpen, Terminal, Network, ShieldCheck, Code } from 'lucide-react';
 
 export default function ExamPrepHub() {
   const examCategories = [
@@ -10,7 +11,6 @@ export default function ExamPrepHub() {
       icon: Cloud,
       color: 'bg-orange-500',
       description: 'Amazon Web Services - 13 Certification Paths',
-      // AWS uses "paths" array
       paths: [
         {
           pathName: 'Foundational',
@@ -70,10 +70,58 @@ export default function ExamPrepHub() {
       ]
     },
     {
+      name: 'Programming & Software Engineering',
+      icon: Code,
+      color: 'bg-indigo-600',
+      description: 'Master core languages: Python, Java, C++, JavaScript, Go, and Swift',
+      paths: [
+        {
+          pathName: 'Python Track',
+          pathDescription: 'From scripting to data science',
+          exams: [
+            { name: 'PCEP (Entry-Level Python Programmer)', path: '/programming/python-pcep', status: 'Available', questions: 30, duration: '45 min' },
+            { name: 'PCAP (Associate Python Programmer)', path: '/programming/python-pcap', status: 'Available', questions: 40, duration: '65 min' },
+            { name: 'PCPP1 (Professional Python)', path: '/programming/python-pcpp1', status: 'Coming Soon', questions: 45, duration: '90 min' }
+          ]
+        },
+        {
+          pathName: 'Java Track',
+          pathDescription: 'Enterprise development standards',
+          exams: [
+            { name: 'Java SE 17 Developer (1Z0-829)', path: '/programming/java-se-17', status: 'Coming Soon', questions: 50, duration: '90 min' },
+            { name: 'Java Certified Foundations Associate', path: '/programming/java-foundations', status: 'Available', questions: 60, duration: '120 min' }
+          ]
+        },
+        {
+          pathName: 'JavaScript & Node.js',
+          pathDescription: 'Full-stack web development',
+          exams: [
+            { name: 'JSNAD (OpenJS Node.js App Developer)', path: '/programming/node-jsnad', status: 'Coming Soon', questions: 30, duration: '120 min' },
+            { name: 'JavaScript Algorithms & Data Structures', path: '/programming/js-algo', status: 'Available', questions: 50, duration: '60 min' }
+          ]
+        },
+        {
+          pathName: 'C++ & Systems',
+          pathDescription: 'Low-level and high-performance coding',
+          exams: [
+            { name: 'CPA (C++ Certified Associate Programmer)', path: '/programming/cpp-cpa', status: 'Coming Soon', questions: 40, duration: '60 min' },
+            { name: 'CPP (C++ Certified Professional)', path: '/programming/cpp-cpp', status: 'Coming Soon', questions: 40, duration: '60 min' }
+          ]
+        },
+        {
+          pathName: 'Modern Languages (Go & Swift)',
+          pathDescription: 'Cloud-native and Mobile development',
+          exams: [
+            { name: 'Go (Golang) Certified Engineer', path: '/programming/golang-associate', status: 'Available', questions: 40, duration: '60 min' },
+            { name: 'App Development with Swift (Apple)', path: '/programming/swift-app-dev', status: 'Coming Soon', questions: 45, duration: '60 min' }
+          ]
+        }
+      ]
+    },
+    {
       name: 'CompTIA Certifications',
       icon: Shield,
       color: 'bg-red-500',
-      // Others use "exams" array directly
       exams: [
         { name: 'A+ Core 1 (220-1101)', path: '/comptia/a-plus-core1', status: 'Coming Soon', questions: 90 },
         { name: 'A+ Core 2 (220-1102)', path: '/comptia/a-plus-core2', status: 'Coming Soon', questions: 90 },
@@ -146,18 +194,18 @@ export default function ExamPrepHub() {
     }
   ];
 
-  // --- 1. DYNAMIC COUNT LOGIC ---
+  // --- DYNAMIC CALCULATIONS START HERE ---
   const totalTracks = examCategories.length;
 
   const availableExamsCount = examCategories.reduce((total, category) => {
     let count = 0;
     
-    // Case 1: Simple list of exams (CompTIA, Microsoft, etc.)
+    // Case 1: Simple list of exams
     if (category.exams) {
       count += category.exams.filter(exam => exam.status === 'Available').length;
     }
     
-    // Case 2: Nested paths (AWS)
+    // Case 2: Nested paths
     if (category.paths) {
       category.paths.forEach(path => {
         if (path.exams) {
@@ -169,8 +217,7 @@ export default function ExamPrepHub() {
     return total + count;
   }, 0);
 
-
-  // --- Helper Component to render a single exam row (to avoid code duplication) ---
+  // --- Helper Component to render a single exam row ---
   const ExamRow = ({ exam }) => (
     <div className="p-6 hover:bg-gray-50 transition border-b last:border-b-0">
       <div className="flex items-center justify-between">
@@ -188,7 +235,6 @@ export default function ExamPrepHub() {
             }`}>
               {exam.status}
             </span>
-            {/* Show extra details if they exist */}
             {exam.duration && <span className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded">⏱ {exam.duration}</span>}
           </div>
         </div>
@@ -261,12 +307,9 @@ export default function ExamPrepHub() {
                 </div>
 
                 <div className="divide-y">
-                  {/* LOGIC TO RENDER EITHER PATHS (AWS) OR DIRECT EXAMS (OTHERS) */}
-                  
-                  {/* 1. If it has paths (Like AWS), loop through paths then exams */}
+                  {/* Case 1: Nested paths (AWS, Programming) */}
                   {category.paths && category.paths.map((path) => (
                     <div key={path.pathName} className="border-b last:border-b-0">
-                      {/* Optional: Add a sub-header for the path like "Associate Level" */}
                       <div className="bg-gray-50 px-6 py-2 border-b border-gray-100">
                         <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider">{path.pathName}</h3>
                         {path.pathDescription && <p className="text-xs text-gray-400">{path.pathDescription}</p>}
@@ -278,7 +321,7 @@ export default function ExamPrepHub() {
                     </div>
                   ))}
 
-                  {/* 2. If it has direct exams (Like CompTIA), loop exams directly */}
+                  {/* Case 2: Simple exams list (CompTIA, etc.) */}
                   {category.exams && category.exams.map((exam) => (
                     <ExamRow key={exam.name} exam={exam} />
                   ))}
