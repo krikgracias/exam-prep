@@ -10,10 +10,26 @@ const examCategories = [
     icon: Cloud,
     color: 'bg-orange-500',
     exams: [
-      { name: 'Cloud Practitioner', path: '/aws/cloud-practitioner', status: 'Available', questions: 65 },
-      { name: 'Solutions Architect Associate', path: '/aws/solutions-architect-associate', status: 'Coming Soon', questions: 65 },
-      { name: 'Developer Associate', path: '/aws/developer-associate', status: 'Coming Soon', questions: 65 },
-      { name: 'SysOps Administrator Associate', path: '/aws/sysops-administrator', status: 'Coming Soon', questions: 65 }
+      // Foundational
+      { name: 'Cloud Practitioner (CLF-C02)', path: '/aws/cloud-practitioner', status: 'Available', questions: 65 },
+      
+      // Associate Level
+      { name: 'Solutions Architect Associate (SAA-C03)', path: '/aws/solutions-architect-associate', status: 'Coming Soon', questions: 65 },
+      { name: 'Developer Associate (DVA-C02)', path: '/aws/developer-associate', status: 'Coming Soon', questions: 65 },
+      { name: 'SysOps Administrator Associate (SOA-C02)', path: '/aws/sysops-administrator', status: 'Coming Soon', questions: 65 },
+      
+      // Professional Level
+      { name: 'Solutions Architect Professional (SAP-C02)', path: '/aws/solutions-architect-professional', status: 'Coming Soon', questions: 75 },
+      { name: 'DevOps Engineer Professional (DOP-C02)', path: '/aws/devops-engineer-professional', status: 'Coming Soon', questions: 75 },
+      
+      // Specialty Certifications
+      { name: 'Advanced Networking Specialty (ANS-C01)', path: '/aws/advanced-networking-specialty', status: 'Coming Soon', questions: 65 },
+      { name: 'Security Specialty (SCS-C02)', path: '/aws/security-specialty', status: 'Coming Soon', questions: 65 },
+      { name: 'Machine Learning Specialty (MLS-C01)', path: '/aws/machine-learning-specialty', status: 'Coming Soon', questions: 65 },
+      { name: 'Data Analytics Specialty (DAS-C01)', path: '/aws/data-analytics-specialty', status: 'Coming Soon', questions: 65 },
+      { name: 'Database Specialty (DBS-C01)', path: '/aws/database-specialty', status: 'Coming Soon', questions: 65 },
+      { name: 'SAP on AWS Specialty (PAS-C01)', path: '/aws/sap-on-aws-specialty', status: 'Coming Soon', questions: 65 },
+      { name: 'Data Engineer Associate (DEA-C01)', path: '/aws/data-engineer-associate', status: 'Coming Soon', questions: 85 }
     ]
   },
   {
@@ -26,9 +42,9 @@ const examCategories = [
       { name: 'Network+ (N10-008)', path: '/comptia/network-plus', status: 'Available', questions: 90 },
       { name: 'Security+ (SY0-701)', path: '/comptia/security-plus', status: 'Coming Soon', questions: 90 },
       { name: 'Project+ (PK0-005)', path: '/comptia/project-plus', status: 'Available', questions: 90 },
-      { name: 'Linux+ (XK0-005)', path: '/comptia/linux-plus', status: 'Coming Soon', questions: 90 },
+      { name: 'Linux+ (XK0-005)', path: '/comptia/linux-plus', status: 'Available', questions: 90 },
+      { name: 'Data+ (DA0-001)', path: '/comptia/data-plus', status: 'Available', questions: 90 },
       { name: 'Cloud+ (CV0-004)', path: '/comptia/cloud-plus', status: 'Coming Soon', questions: 90 },
-      { name: 'Data+ (DA0-001)', path: '/comptia/cysa-plus', status: 'Coming Soon', questions: 85 },
       { name: 'CySA+ (CS0-003)', path: '/comptia/cysa-plus', status: 'Coming Soon', questions: 85 }
     ]
   },
@@ -73,8 +89,8 @@ const examCategories = [
     exams: [
       { name: 'RHCSA (Red Hat Certified System Administrator)', path: '/linux/rhcsa', status: 'Coming Soon', questions: 80 },
       { name: 'LFCS (Linux Foundation Certified SysAdmin)', path: '/linux/lfcs', status: 'Coming Soon', questions: 60 },
-      { name: 'Kubernetes CKA', path: '/devops/cka', status: 'Available', questions: 15 },
-      { name: 'Kubernetes CKAD', path: '/devops/ckad', status: 'Available', questions: 15 },
+      { name: 'Kubernetes CKA', path: '/devops/cka', status: 'Available', questions: 20 },
+      { name: 'Kubernetes CKAD', path: '/devops/ckad', status: 'Available', questions: 20 },
       { name: 'Terraform Associate', path: '/devops/terraform-associate', status: 'Available', questions: 57 },
       { name: 'Docker Certified Associate', path: '/devops/docker-dca', status: 'Coming Soon', questions: 55 }
     ]
@@ -87,7 +103,7 @@ const examCategories = [
       { name: 'CISSP', path: '/security/cissp', status: 'Coming Soon', questions: 125 },
       { name: 'CEH (Certified Ethical Hacker)', path: '/security/ceh', status: 'Coming Soon', questions: 125 },
       { name: 'CISM', path: '/security/cism', status: 'Coming Soon', questions: 150 },
-      //{ name: 'Security+ (SY0-701)', path: '/comptia/security-plus', status: 'Coming Soon', questions: 90 }
+      { name: 'Security+ (SY0-701)', path: '/comptia/security-plus', status: 'Coming Soon', questions: 90 }
     ]
   }
 ];
